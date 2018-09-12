@@ -7,18 +7,21 @@
         mc:Ignorable="d"
         Title="" Height="650"  Width="800" MinWidth="300" >
 	<Grid x:Name="grid" Margin="20,30">
+		
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*" ></RowDefinition>
-			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Name="fila1" Height="*" ></RowDefinition>
+			<RowDefinition Name="fila2" Height="*"></RowDefinition>
+			<RowDefinition Name="fila3" Height="*"></RowDefinition>
+			<RowDefinition Name="fila4" Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" ></ColumnDefinition>
-			<ColumnDefinition Width="*"></ColumnDefinition>
-			<ColumnDefinition Width="*"></ColumnDefinition>
-			<ColumnDefinition Name="bordeder" Width="*"></ColumnDefinition>
+			<ColumnDefinition Name="columna1" Width="*" ></ColumnDefinition>
+			<ColumnDefinition Name="columna2" Width="*"></ColumnDefinition>
+			<ColumnDefinition Name="columna3" Width="*"></ColumnDefinition>
+			<ColumnDefinition Name="columna4" Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Label  x:Name="nombre" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="#00000000" FontSize="18"></Label>
+		
+		<Frame Name="contendorPaginas" Grid.ColumnSpan="4" Grid.RowSpan="4" NavigationUIVisibility="Hidden" Content=""/>
 	</Grid>
 </Window>

@@ -25,7 +25,7 @@ namespace Sistemas
         }
         public string[] realizarConsulta(string query, SqlConnection servidor)
         {
-            string[] datos = new string[5];
+            string[] datos = new string[6];
             comando = new SqlCommand();
 			comando.CommandText = query;
 			comando.CommandType = CommandType.Text;
@@ -39,6 +39,7 @@ namespace Sistemas
 					datos[2] = reader["apellido"].ToString();
 					datos[3] = reader["matricula"].ToString();
 					datos[4] = reader["provincia_id"].ToString();
+					datos[5] = reader["tipoUsu"].ToString();
 				}
 				reader.Close();
 			return datos;

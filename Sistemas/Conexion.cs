@@ -9,30 +9,46 @@ using System.Data.SqlClient;
 
 namespace Sistemas
 {
-    class Conexion
-    {
-        string servidor;
-        bool conectado=false;
-        SqlConnection conectarBd;
-        ConsultasMedicos checkUser;
-        
+	class Conexion
+	{
+		string servidor;
+		bool conectado = false;
+		SqlConnection conectarBd;
+		ConsultasMedicos checkUser;
 
-        public Conexion(string ruta)
-        {
-            this.servidor = ruta;
-        }
 
-        public SqlConnection getConexion()
-        {
-            return this.conectarBd;
-        }
+		public Conexion(string ruta)
+		{
+			this.servidor = ruta;
+			this.conectarBd = new SqlConnection(ruta);
+		}
 
-        public string getServidor()
-        {
-            return this.servidor;
-        }
+		public SqlConnection getConexion()
+		{
+			return this.conectarBd;
+		}
 
-       
+		public string getServidor()
+		{
+			return this.servidor;
+		}
+
+		public string Contar(string tabla, string medico)
+		{
+			string cantidad = "";
+			conectarBd.Open();
+			SqlCommand comando = new SqlCommand("select count(*) as 'cantidad' from "+ tabla+ " where medico= "+ medico, conectarBd);
+			SqlDataReader reader;
+			reader = comando.ExecuteReader();
+			while (reader.Read())
+			{
+				cantidad = reader["cantidad"].ToString();
+			}
+			reader.Close();
+			conectarBd.Close();
+
+			return cantidad;
+		} 
 
         
 
@@ -51,6 +67,39 @@ namespace Sistemas
 					return conectado =true;
 
         }
+
+		public string VerTipoUsuario(string id)
+		{
+			string tipo="";
+			conectarBd.Open();
+			SqlCommand comando = new SqlCommand("select tipo from tipoUsuario where idTipo= " + int.Parse(id), conectarBd);
+			SqlDataReader reader;
+			reader = comando.ExecuteReader();
+			while (reader.Read())
+			{
+				tipo = reader["tipo"].ToString();
+			}
+				reader.Close();
+			conectarBd.Close();
+			return tipo;
+
+		}
+
+		public bool insertHistoriaCl(string[] valores)
+		{
+			conectarBd.Open();
+			SqlCommand comando = new SqlCommand("insert into historiaCl values((select SYSDATETIME()), " + valores[1] + ", '" + valores[2] + "')", this.conectarBd);
+			int nroFilasDevueltas=comando.ExecuteNonQuery();
+			conectarBd.Close();
+			if (nroFilasDevueltas > 0)
+				return true;
+			else return false;
+
+		}
+
+
+
+
             
             
             

@@ -59,17 +59,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controles\TablaSql.cs" />
-    <Compile Include="Usuario_menu_principal.xaml.cs">
-      <DependentUpon>Usuario_menu_principal.xaml</DependentUpon>
+    <Compile Include="Paginas\MenuUsuario\MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
-    <Page Include="buscarPac.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ingresarDatos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="Paginas\MenuUsuario\PagLlenarHisotria.xaml.cs">
+      <DependentUpon>PagLlenarHisotria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaUsuario.xaml.cs">
+      <DependentUpon>VentanaUsuario.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,19 +76,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="buscarPac.xaml.cs">
-      <DependentUpon>buscarPac.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="ConsultasMedicos.cs" />
-    <Compile Include="ingresarDatos.xaml.cs">
-      <DependentUpon>ingresarDatos.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Usuario_menu_principal.xaml">
+    <Page Include="Paginas\MenuUsuario\MenuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\MenuUsuario\PagLlenarHisotria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

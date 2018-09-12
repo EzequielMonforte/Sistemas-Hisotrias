@@ -4,16 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistemas"
-        mc:Ignorable="d" Height="280" Width="270" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" TabIndex="4">
+        mc:Ignorable="d" Height="280" Width="270" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" TabIndex="4" KeyUp="Window_KeyUp">
 	<Grid>
-		<Grid.Background>
-			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-				<GradientStop Color="#7F418296"/>
-				<GradientStop Color="White" Offset="1"/>
-				<GradientStop Color="#7F319FC0" Offset="0.212"/>
-				<GradientStop Color="#7F9EDEF1" Offset="0.472"/>
-			</LinearGradientBrush>
-		</Grid.Background>
 		<Label x:Name="Nombre" Content="Apellido" HorizontalAlignment="Left" Margin="35,34,0,0" VerticalAlignment="Top"/>
 		<TextBox x:Name="ingMat" HorizontalAlignment="Left" Height="23" Margin="35,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180
                  " TabIndex="2" BorderThickness="1"/>

@@ -30,9 +30,12 @@ namespace Sistemas
         string[] datosMedico = new string[7];
         Conexion servidor;
         ConsultasMedicos medico = new ConsultasMedicos();
-        //MySqlCommand comando;
 
-        public MainWindow()
+		internal Conexion Servidor { get => servidor; set => servidor = value; }
+
+		//MySqlCommand comando;
+
+		public MainWindow()
         {
             InitializeComponent();
 			ingNom.Focus();
@@ -67,6 +70,34 @@ namespace Sistemas
 		{
 			this.Background = Brushes.Azure;
 			
+		}
+		
+		private void Window_KeyUp(object sender, KeyEventArgs e)
+		{
+			
+			if (e.Key == Key.Enter) {
+				servidor = new Conexion("Data Source=localhost;Initial Catalog=ecco;Integrated Security=True");
+				this.apellido = ingNom.Text;
+				this.matricula = ingMat.Text;
+				flagServerConection = servidor.logueado(servidor.getServidor(), this.apellido, this.matricula);
+
+				if (flagServerConection)
+				{
+
+					Usuario_menu_principal a = new Usuario_menu_principal(medico.realizarConsulta(medico.QuerydatosMedico(this.apellido, this.matricula), servidor.getConexion()), servidor.getConexion());
+					a.Show();
+					this.Close();
+				}
+				else if (flagServerConection == false)
+				{
+					
+					MessageBox.Show("No se pudo conectar");
+					
+
+				}
+			}
+				
+
 		}
 	}
 }

@@ -8,30 +8,67 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Data.SqlClient;
 using System.Data;
+using System.Timers;
 
 namespace Sistemas.Controles
 {
 	class TablaSql:DataGrid
 	{
+		SqlDataAdapter dataAdapter;
+		SqlDataAdapter actualizador;
+		DataSet ds;
+		Timer contadorTiempo;
+		SqlConnection conexion;
+		string consulta;
+		
+		
 		
 		public TablaSql(SqlConnection conexion, string consulta)
 		{
+			this.conexion = conexion;
+			this.consulta = consulta;
 			ConectarSql(conexion, consulta);
+			DisenarTabla();
+			contadorTiempo = new Timer(10000);
+			contadorTiempo.Enabled = true;
+			contadorTiempo.Elapsed += eventoIntervalo;
+			this.IsReadOnly = true;
+			
+			
+		}	
+
+		
+
+		public void eventoIntervalo(object sender, ElapsedEventArgs e)
+		{
 			
 
 		}
+
+		private void DisenarTabla()
+		{
 			
+		}
 
 		private void ConectarSql(SqlConnection conexion, string consulta)
 		{
 			
-			SqlDataAdapter dataAdapter = new SqlDataAdapter(consulta, conexion);
-			DataSet ds = new DataSet();
+			dataAdapter = new SqlDataAdapter(consulta, conexion);
+			ds = new DataSet();
+			
 			dataAdapter.Fill(ds);
 			this.ItemsSource = ds.Tables[0].DefaultView;
-			this.ColumnWidth = DataGridLength.SizeToCells;
+			this.ColumnWidth = DataGridLength.Auto;
 			
-			
+
+
+
 		}
 	}
 }
+
+
+
+
+
+
