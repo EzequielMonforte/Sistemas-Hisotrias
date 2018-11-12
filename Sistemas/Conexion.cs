@@ -58,7 +58,17 @@ namespace Sistemas
             
             conectarBd = new SqlConnection(servidor);
 			checkUser = new ConsultasMedicos();
-            conectarBd.Open();
+			try
+			{
+				conectarBd.Open();
+			}
+			catch
+			{
+				return conectado = false;
+				
+				
+			}
+            
 			idmed = checkUser.realizarConsulta(checkUser.QuerydatosMedico(ape, mat), conectarBd)[0];
 
 				if (idmed == null)
@@ -84,11 +94,16 @@ namespace Sistemas
 			return tipo;
 
 		}
-
+		/// <summary>
+		/// Inserts document data in bd conected
+		/// </summary>
+		/// <param name="valores"></param>
+		/// <returns></returns>
 		public bool insertHistoriaCl(string[] valores)
 		{
 			conectarBd.Open();
-			SqlCommand comando = new SqlCommand("insert into historiaCl values((select SYSDATETIME()), " + valores[1] + ", '" + valores[2] + "')", this.conectarBd);
+			SqlCommand comando = new SqlCommand("insert into historiaCl values((select SYSDATETIME()), " + valores[0] + ", '" + valores[1] + "')", this.conectarBd);
+			//TODO controlar error si se ingresa un paciente no registrado
 			int nroFilasDevueltas=comando.ExecuteNonQuery();
 			conectarBd.Close();
 			if (nroFilasDevueltas > 0)

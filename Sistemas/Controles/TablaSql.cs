@@ -25,6 +25,8 @@ namespace Sistemas.Controles
 		
 		public TablaSql(SqlConnection conexion, string consulta)
 		{
+			dataAdapter = new SqlDataAdapter(consulta, conexion);
+			ds = new DataSet();
 			this.conexion = conexion;
 			this.consulta = consulta;
 			ConectarSql(conexion, consulta);
@@ -33,7 +35,10 @@ namespace Sistemas.Controles
 			contadorTiempo.Enabled = true;
 			contadorTiempo.Elapsed += eventoIntervalo;
 			this.IsReadOnly = true;
+			this.CanUserResizeColumns = false;
+			this.RowBackground = Brushes.LightSkyBlue;
 			
+
 			
 		}	
 
@@ -41,7 +46,7 @@ namespace Sistemas.Controles
 
 		public void eventoIntervalo(object sender, ElapsedEventArgs e)
 		{
-			
+		
 
 		}
 
@@ -52,17 +57,12 @@ namespace Sistemas.Controles
 
 		private void ConectarSql(SqlConnection conexion, string consulta)
 		{
-			
-			dataAdapter = new SqlDataAdapter(consulta, conexion);
-			ds = new DataSet();
-			
+						
 			dataAdapter.Fill(ds);
+			
 			this.ItemsSource = ds.Tables[0].DefaultView;
 			this.ColumnWidth = DataGridLength.Auto;
 			
-
-
-
 		}
 	}
 }

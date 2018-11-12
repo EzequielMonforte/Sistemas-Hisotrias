@@ -17,6 +17,7 @@ using Sistemas.Properties;
 using System.Data.SqlClient;
 using Sistemas.Paginas.MenuUsuario;
 using System.Globalization;
+using iTextSharp;
 
 namespace Sistemas.Paginas.MenuUsuario
 {
@@ -25,6 +26,7 @@ namespace Sistemas.Paginas.MenuUsuario
 	/// </summary>
 	public partial class MenuPrincipal : Page
 	{
+		
 		TablaSql a;
 		SqlConnection conexion;
 		Conexion consultas;
@@ -33,7 +35,9 @@ namespace Sistemas.Paginas.MenuUsuario
 		
 		public MenuPrincipal(string[] datos, SqlConnection conexion)
 		{
+			
 			InitializeComponent();
+			
 			consultas = new Conexion(conexion.ConnectionString);
 			this.datos = datos;
 			this.conexion = conexion;
@@ -41,11 +45,7 @@ namespace Sistemas.Paginas.MenuUsuario
 			GenerarTabla();
 			MostrarDatosUsuario();
 			
-
-
-
-
-
+			
 		}
 
 		private void MostrarDatosUsuario()
@@ -90,3 +90,8 @@ namespace Sistemas.Paginas.MenuUsuario
 		}
 	}
 }
+
+
+
+
+

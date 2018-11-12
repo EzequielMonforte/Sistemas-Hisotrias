@@ -6,14 +6,25 @@ using System.Threading.Tasks;
 
 namespace Sistemas
 {
-    class Medico
+     class Medico
     {
-        private string nombre;
-        private string apellido;
-        private string provincia;
-        private string matricula;
-        private string nroMovil;
-        private string pagoPac;
-        private string pagoTot;
+		private string id;
+		public static string nombre;
+		public static string apellido;
+		public static string provincia;
+		public static string matricula;
+		public static string nroMovil;
+		private string pagoPac;
+		private string pagoTot;
+		/// <summary>
+		/// guarda info de bd en variables
+		/// </summary>
+		/// <param name="dt">[0] nombre,[0] nombre,[0] nombre,[0] nombre,[0] nombre,
+		/// [0] nombre,</param>
+		public static void ObtenerDatos(string[] dt) {
+			
+
+
+		}
     }
 }

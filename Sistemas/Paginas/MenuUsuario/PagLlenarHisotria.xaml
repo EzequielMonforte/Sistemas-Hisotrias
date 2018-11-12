@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Sistemas.Paginas"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="450"
-      Title="PagLlenarHisotria">
+      Title="PagLlenarHisotria" Background="#FFE5E5E5">
 	<Grid x:Name="grid">
 
 		<Grid.RowDefinitions>
@@ -21,10 +21,12 @@
 			<ColumnDefinition Name="columna3" Width="*"></ColumnDefinition>
 			<ColumnDefinition Name="columna4" Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
-		<Label x:Name="afiliado" Content="Nro Afiliado: " Margin="40,55,0,45.6" Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.504,0.442"/>
-		<TextBox x:Name="ingAf" Grid.Column="1" Grid.Row="0" Margin="10,50" Height="20"></TextBox>
-		<Label x:Name="fecha" Content="Fecha: " Margin="50,55,0,45.6" Grid.Column="0" Grid.Row="1" RenderTransformOrigin="0.504,0.442"/>
-		<TextBox x:Name="ingFecha" Grid.Column="1" Grid.Row="1" Margin="10,50" Height="20"></TextBox>
+		<Label x:Name="afiliado" Content="Nro Afiliado: " Margin="27,27,13,73.6" Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.5,0.5"/>
+		<TextBox x:Name="ingAf" Grid.Row="0" Margin="109,31,61.8,86.6" Height="20" Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" LostFocus="ingAf_LostFocus" MouseDoubleClick="ingAf_MouseDoubleClick"/>
 		<Button x:Name="guardar" Content="Guardar" Grid.Column="3" Grid.Row="3" Height="30" Width="70" Click="guardar_Click"></Button>
+		<Label x:Name="diagnositco" Content="Diagnostico:" Margin="28,13.4,12,87.2" Grid.Column="0" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+		<TextBox x:Name="tx_diag" Grid.Row="1" Margin="109,18.4,67.6,47.2" Grid.ColumnSpan="4" RenderTransformOrigin="0.5,0.5" HorizontalScrollBarVisibility="Disabled"/>
+		<Label x:Name="indicaciones" Content="Indicaciones" Margin="24,18.8,10,81.8" Grid.Column="0" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+		<TextBox x:Name="tx_indic" Grid.Row="2" Margin="108,23.8,68.6,41.8" Grid.ColumnSpan="4" RenderTransformOrigin="0.5,0.5" HorizontalScrollBarVisibility="Disabled"/>
 	</Grid>
 </Page>

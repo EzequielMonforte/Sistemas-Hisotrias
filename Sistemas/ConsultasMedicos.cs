@@ -9,12 +9,12 @@ using System.Data;
 
 namespace Sistemas
 {
+	
     class ConsultasMedicos
     {
         SqlCommand comando;
         public ConsultasMedicos()
-        {
-            
+		{
         }
 
         public string QuerydatosMedico(string apellido, string matricula)
@@ -40,6 +40,7 @@ namespace Sistemas
 					datos[3] = reader["matricula"].ToString();
 					datos[4] = reader["provincia_id"].ToString();
 					datos[5] = reader["tipoUsu"].ToString();
+				
 				}
 				reader.Close();
 			return datos;
