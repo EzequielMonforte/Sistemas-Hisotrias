@@ -31,13 +31,8 @@ namespace Sistemas.Paginas
 			InitializeComponent();
 			this.datos = datos;
 			historiaPdf = new Document();
-			PdfWriter.GetInstance(historiaPdf, new FileStream("sdsdf.pdf", FileMode.OpenOrCreate));
-			historiaPdf.Open();
-			
-			historiaPdf.Add(new iTextSharp.text.Paragraph("hey"));
-			
-			historiaPdf.Close();
-			FillForm();
+
+			LlenarFormulario();
 
 
 		}
@@ -76,10 +71,10 @@ namespace Sistemas.Paginas
 			ingAf.Clear();
 		}
 
-		private void FillForm()
+		private void LlenarFormulario()
 		{
-			string pdfTemplate = @"formulario.pdf";
-			string newFile = @"formulario1.pdf";
+			string pdfTemplate = @"\Sistemas-Hisotrias\Resources\formulario.pdf";
+			string newFile = @"\Sistemas-Hisotrias\Resources\formulariolleno.pdf";
 
 			PdfReader pdfReader = new PdfReader(pdfTemplate);
 			PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(
@@ -89,8 +84,8 @@ namespace Sistemas.Paginas
 
 			// Asigna los campos
 
-			pdfFormFields.SetField("c1","df");
-			pdfFormFields.SetField("c2", "lklk");
+			pdfFormFields.SetField("fecha","df");
+			pdfFormFields.SetField("hora", "lklk");
 			pdfFormFields.SetField("c3", "dato 3");
 			pdfFormFields.SetField("c4", "dato 4");
 

@@ -20,9 +20,10 @@ namespace Sistemas.Controles
 		Timer contadorTiempo;
 		SqlConnection conexion;
 		string consulta;
+
+
 		
-		
-		
+	
 		public TablaSql(SqlConnection conexion, string consulta)
 		{
 			dataAdapter = new SqlDataAdapter(consulta, conexion);
